@@ -67,7 +67,7 @@ class TestController {
 
 **Expected:**
 
-result should be 2 as `application.yml` contains:
+result (`configurations`) should be 2 as `application.yml` contains:
 
 ```yaml
 test:
@@ -81,4 +81,4 @@ test:
 
 **Actually:**
 
-result is 0
+result (`configurations`) is 0
