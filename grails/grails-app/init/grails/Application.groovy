@@ -1,23 +1,22 @@
 package grails
 
-import grails.boot.GrailsApp
+
+import grails.boot.GrailsAppBuilder
 import grails.boot.config.GrailsAutoConfiguration
-import io.micronaut.context.annotation.Prototype
-import io.micronaut.spring.beans.MicronautBeanProcessor
-import org.springframework.context.annotation.Bean
+import io.micronaut.context.ApplicationContext
+import io.micronaut.spring.context.MicronautApplicationContext
 import org.springframework.context.annotation.ComponentScan
-import javax.inject.Singleton
 
 @ComponentScan([
         "net.safri"
 ])
 class Application extends GrailsAutoConfiguration {
     static void main(String[] args) {
-        GrailsApp.run(Application, args)
-    }
-
-    @Bean
-    MicronautBeanProcessor httpClientMicronautBeanProcessor() {
-        return new MicronautBeanProcessor(Prototype, Singleton)
+        GrailsAppBuilder builder = new GrailsAppBuilder()
+        def context = new MicronautApplicationContext(ApplicationContext.build())
+        context.start()
+        builder.parent(context)
+        builder.sources(Application)
+        builder.build().run()
     }
 }

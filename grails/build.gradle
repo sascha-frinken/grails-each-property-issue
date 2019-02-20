@@ -23,14 +23,17 @@ repositories {
     mavenCentral()
     maven { url "https://jcenter.bintray.com" }
     maven { url "https://repo.grails.org/grails/core" }
+    jcenter()
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
 }
 
 ext {
-    micronautVersion = "1.0.3"
+    micronautVersion = "1.1.0.M1"
 }
 
 dependencies {
-    compile "io.micronaut:micronaut-spring:$micronautVersion"
+    compile "io.micronaut:micronaut-spring:1.0.0.BUILD-SNAPSHOT"
+    compile "io.micronaut.spring:micronaut-spring-context:1.0.0.M3"
     compile "net.safri:each-property:0.1"
     compile "org.springframework.boot:spring-boot-starter-logging"
     compile "org.springframework.boot:spring-boot-autoconfigure"
